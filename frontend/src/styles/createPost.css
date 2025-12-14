@@ -1,0 +1,55 @@
+.create-post-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.create-card {
+    background: var(--bg-card);
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.create-header {
+    text-align: center;
+    color: var(--text-main);
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.image-preview {
+    height: 300px;
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+textarea.caption-input {
+    min-height: 120px;
+    resize: none;
+}
+
+button[type="submit"] {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+button[type="submit"]:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
