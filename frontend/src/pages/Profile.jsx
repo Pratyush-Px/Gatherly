@@ -12,13 +12,13 @@ const Profile = () => {
     const [isFollowing, setIsFollowing] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // --- MODAL STATES ---
+    //MODAL STATES
     const [selectedPost, setSelectedPost] = useState(null);
     const [showUserModal, setShowUserModal] = useState(null);
     const [userList, setUserList] = useState([]);
     const [commentText, setCommentText] = useState('');
     
-    // --- EDIT STATE ---
+    //EDIT STATE
     const [isEditing, setIsEditing] = useState(false);
     const [editCaption, setEditCaption] = useState('');
 
@@ -124,7 +124,7 @@ const Profile = () => {
         }
     };
 
-    // --- NEW: DELETE COMMENT FUNCTION ---
+    // DELETE COMMENT FUNCTION 
     const handleDeleteComment = async (commentId) => {
         if (!window.confirm("Delete this comment?")) return;
         
@@ -265,7 +265,7 @@ const Profile = () => {
                                                 {c.content}
                                             </div>
                                             
-                                            {/* --- DELETE COMMENT BUTTON (Only if owner) --- */}
+                                            {/*DELETE COMMENT BUTTON (Only if owner) */}
                                             {c.username === currentUser && (
                                                 <button 
                                                     onClick={() => handleDeleteComment(c.id)}

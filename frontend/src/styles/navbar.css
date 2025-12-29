@@ -83,7 +83,7 @@
     background-color: #fee2e2;
 }
 
-/* --- MOBILE BOTTOM BAR --- */
+/* MOBILE BOTTOM BAR */
 @media (max-width: 768px) {
     .navbar {
         height: 65px;
@@ -104,7 +104,7 @@
     }
 
     .nav-logo, .nav-label, .logout-btn, .search-container {
-        display: none; /* Hide non-essentials on mobile */
+        display: none; 
     }
 
     .nav-links {

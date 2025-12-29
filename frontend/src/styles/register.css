@@ -1,4 +1,4 @@
-/* We reuse similar logic to login for consistency */
+/* REGISTER PAGE STYLES */
 .register-container {
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
 .register-form {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Slightly tighter gap for more fields */
+    gap: 8px; 
 }
 
 .register-footer {

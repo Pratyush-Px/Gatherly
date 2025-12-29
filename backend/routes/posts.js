@@ -15,7 +15,7 @@ const postsRoutes = (db) => {
         [user_id, content, image_url]
       );
       res.status(201).json({
-        message: "✅ Post created!",
+        message: "Post created!",
         post: result.rows[0],
       });
     } catch (err) {
@@ -24,9 +24,8 @@ const postsRoutes = (db) => {
     }
   });
 
-  // 2. GET FEED (PUBLIC - Shows posts + author info)
-  // 2. GET FEED (Now includes Comments!)
-  // 2. GET FEED (With Pagination)
+  //2. GET FEED PUBLIC - Shows posts + author info,includes Comments!,Pagination
+  
   router.get("/feed", async (req, res) => {
     const page = parseInt(req.query.page) || 1; // Default to page 1
     const limit = 20;
@@ -66,10 +65,7 @@ const postsRoutes = (db) => {
     }
   });
 
-  // 3. LIKE POST (JWT REQUIRED)
-  // 3. LIKE POST (With Duplicate Prevention)
-  // 3. TOGGLE LIKE (Like / Unlike)
-  // TOGGLE LIKE (Updated with Notification)
+  // 3. LIKE POST JWT REQUIRED, With Duplicate Prevention, Like / Unlike, Updated with Notification
   router.post("/:id/like", authMiddleware, async (req, res) => {
     const postId = req.params.id;
     const userId = req.user.id;
@@ -81,16 +77,16 @@ const postsRoutes = (db) => {
       );
 
       if (checkLike.rows.length > 0) {
-        // UNLIKE logic... (No notification needed)
+        // UNLIKE logic. (No notification needed)
         await db.query("DELETE FROM post_likes WHERE user_id = $1 AND post_id = $2", [userId, postId]);
         const result = await db.query("UPDATE posts SET likes = GREATEST(likes - 1, 0) WHERE id = $1 RETURNING likes", [postId]);
         return res.json({ message: "Unliked", likes: result.rows[0].likes });
       } else {
-        // LIKE logic...
+        // LIKE logic!
         await db.query("INSERT INTO post_likes (user_id, post_id) VALUES ($1, $2)", [userId, postId]);
         const result = await db.query("UPDATE posts SET likes = likes + 1 WHERE id = $1 RETURNING likes", [postId]);
 
-        // --- NOTIFICATION LOGIC START ---
+        // notification logic start
         const postRes = await db.query("SELECT user_id FROM posts WHERE id = $1", [postId]);
         const recipient_id = postRes.rows[0].user_id;
         
@@ -101,7 +97,7 @@ const postsRoutes = (db) => {
                 [recipient_id, userId, postId]
             );
         }
-        // --- NOTIFICATION LOGIC END ---
+        // notification logic end
 
         return res.json({ message: "Liked", likes: result.rows[0].likes });
       }
@@ -192,7 +188,7 @@ const postsRoutes = (db) => {
       }
 
       res.json({
-        message: "✅ Post updated",
+        message: "Post updated",
         post: result.rows[0],
       });
     } catch (err) {

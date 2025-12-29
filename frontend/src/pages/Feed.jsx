@@ -166,7 +166,7 @@ const Feed = () => {
                     ))
                 )}
 
-                {/* --- LOAD MORE BUTTON --- */}
+                {/* LOAD MORE BUTTON */}
                 {hasMore && posts.length > 0 && (
                     <div style={{ textAlign: 'center', margin: '20px 0 40px' }}>
                         <button 

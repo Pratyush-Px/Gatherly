@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS) || 10;
 
-const authRoutes = (db) => {  // 👈 RECEIVE db parameter
+const authRoutes = (db) => {  //RECEIVE db parameter
     const router = Router();
 
     // REGISTER
@@ -12,7 +12,7 @@ const authRoutes = (db) => {  // 👈 RECEIVE db parameter
         const { name, username, email, password } = req.body;
         
         try {
-            const checkResult = await db.query(  // 👈 Use passed db
+            const checkResult = await db.query(  //Use passed db
                 'SELECT * FROM users WHERE username = $1 OR email = $2', 
                 [username, email]
             );
@@ -26,7 +26,7 @@ const authRoutes = (db) => {  // 👈 RECEIVE db parameter
                         res.status(500).send("Password hash failed");
                     } else {
                         //console.log("Hashed Password:", hash);
-                        await db.query(  // 👈 Use passed db
+                        await db.query(  //Use passed db
                             "INSERT INTO users (name, username, email, password) VALUES ($1, $2, $3, $4)",
                             [name, username, email, hash]
                         );
@@ -65,12 +65,12 @@ const authRoutes = (db) => {  // 👈 RECEIVE db parameter
                                 user: { username: user.username, name: user.name } 
                             });
                         } else {
-                            res.status(400).send("❌ Incorrect Password");
+                            res.status(400).send("Incorrect Password");
                         }
                     }
                 });
             } else {
-                res.status(404).send("❌ User not found");
+                res.status(404).send("User not found");
             }
         } catch (err) {
             console.log(err);
@@ -78,7 +78,7 @@ const authRoutes = (db) => {  // 👈 RECEIVE db parameter
         }
     });
 
-    return router;  // 👈 Return router
+    return router;  //Return router
 };
 
 export default authRoutes;

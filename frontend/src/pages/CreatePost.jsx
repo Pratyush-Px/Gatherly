@@ -8,10 +8,10 @@ const CreatePost = () => {
     const [content, setContent] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [loading, setLoading] = useState(false);
-    const [imageError, setImageError] = useState(false); // New state for error handling
+    const [imageError, setImageError] = useState(false); //state for error handling
     const navigate = useNavigate();
 
-    // Reset error when user types a new URL
+    // Resets error when user types a new URL
     const handleImageChange = (e) => {
         setImageUrl(e.target.value);
         setImageError(false);
@@ -53,7 +53,7 @@ const CreatePost = () => {
                             />
                         </div>
 
-                        {/* Smart Image Preview */}
+                        {/* Image Preview */}
                         <div className="image-preview">
                             {imageUrl && !imageError ? (
                                 <img 
@@ -63,7 +63,7 @@ const CreatePost = () => {
                                 />
                             ) : (
                                 <span style={{color: imageError ? 'red' : 'inherit'}}>
-                                    {imageError ? "❌ Invalid Image Link" : "Image Preview"}
+                                    {imageError ? "Invalid Image Link" : "Image Preview"}
                                 </span>
                             )}
                         </div>

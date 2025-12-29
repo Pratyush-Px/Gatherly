@@ -4,7 +4,6 @@ import authMiddleware from '../middleware/auth.js';
 const followsRoutes = (db) => {
     const router = Router();
 
-    // FOLLOW a user
     // FOLLOW a user (Updated with Notification)
     router.post('/follow/:userId', authMiddleware, async (req, res) => {
         const follower_id = req.user.id;
@@ -27,7 +26,7 @@ const followsRoutes = (db) => {
                 [following_id, follower_id]
             );
 
-            res.json({ message: '✅ Now following user' });
+            res.json({ message: 'Now following user' });
         } catch (err) {
             console.error(err);
             res.status(500).send('Server error');

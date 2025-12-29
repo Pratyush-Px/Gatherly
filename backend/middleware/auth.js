@@ -8,7 +8,7 @@ const authMiddleware = (req, res, next) => {
         : null;
 
     if (!token) {
-        return res.status(401).send('❌ Access denied. No token provided.');
+        return res.status(401).send('Access denied. No token provided.');
     }
 
     try {
@@ -17,7 +17,7 @@ const authMiddleware = (req, res, next) => {
         next();
     } catch (err) {
         console.error('JWT verification error:', err.message);
-        return res.status(400).send('❌ Invalid or expired token');
+        return res.status(400).send('Invalid or expired token');
     }
 };
 

@@ -11,7 +11,7 @@
     margin-bottom: 30px;
     overflow: hidden;
     transition: transform 0.2s;
-    border: 1px solid white; /* Subtle border */
+    border: 1px solid white; 
 }
 
 .post-card:hover {
@@ -29,7 +29,7 @@
 .post-avatar-placeholder {
     width: 45px;
     height: 45px;
-    border-radius: 12px; /* Soft square avatar */
+    border-radius: 12px; 
     background: linear-gradient(135deg, #6366f1, #a855f7);
     color: white;
     display: flex;

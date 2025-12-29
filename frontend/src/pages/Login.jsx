@@ -15,7 +15,7 @@ const Login = () => {
             // "api" is the axios instance we created
             const response = await api.post('/auth/login', { email, password });
             
-            // Save the token to local storage so we stay logged in
+            // Save the token to local storage so to stay logged in
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('username', response.data.user.username);
             // Redirect to the Feed page

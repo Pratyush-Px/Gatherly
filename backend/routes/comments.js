@@ -4,8 +4,7 @@ import authMiddleware from "../middleware/auth.js";
 const commentsRoutes = (db) => {
   const router = Router();
 
-  // ADD COMMENT TO POST (JWT REQUIRED)
-  // ADD COMMENT (Updated with Notification)
+  //commenting with notification
   router.post("/posts/:postId", authMiddleware, async (req, res) => {
     const postId = req.params.postId;
     const { content } = req.body;
